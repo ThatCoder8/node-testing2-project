@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Database files
+*.db3
+data/*.db3
+
+# Environment variables
+.env
+
+# OS files
+.DS_Store
+
+# Test coverage
+coverage/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
