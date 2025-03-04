@@ -1,14 +1,20 @@
 const express = require('express');
-const booksRouter = require('./books/books-router');
+const authRouter = require('./auth/auth-router');
+const jokesRouter = require('./jokes/jokes-router');
+const restricted = require('./auth/auth-middleware');
 
 const server = express();
 
 server.use(express.json());
 
-server.use('/api/books', booksRouter);
+server.use('/api/auth', authRouter);
+server.use('/api/jokes', restricted, jokesRouter);
 
-server.get('/', (req, res) => {
-  res.json({ api: 'up and running' });
+server.use((err, req, res, next) => { // eslint-disable-line
+  res.status(500).json({
+    message: err.message,
+    stack: err.stack
+  });
 });
 
 module.exports = server;
